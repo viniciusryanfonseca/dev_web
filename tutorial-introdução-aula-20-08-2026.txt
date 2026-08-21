@@ -1,0 +1,100 @@
+mkdir fastify-hello (cria pasta)
+cd fastify-hello (utiliza a pasta)
+npm init -y (inicializa um novo projeto node.js)
+npm i fastify (instala o fastify (framework (estrutura pronta) para desenvolver web)
+npm i -D typescript tsx @types/node (instala alguns pacotes)
+npx tsc --init (inicializa alguns pacotes)
+
+
+**tsconfig.json** (substitua o totalmente o conteúdo da pasta tsconfig.jason por):
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
+```
+
+
+mkdir src
+
+(após isso, cria um text file com nome index.ts dentro da pasta scr)
+
+**src/index.ts**:
+
+
+import Fastify from 'fastify'
+
+const app = Fastify({ logger: true })
+
+app.get('/', async () => {
+  return { hello: 'world' }
+})
+
+const start = async () => {
+  try {
+    await app.listen({ port: 3000, host: '[REDACTED IP]' })
+  } catch (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+}
+
+start()
+
+(substitua o "[REDACTED IP]" por localhost)
+
+
+**package.json** (adicione nos scripts):
+
+"scripts": {
+  "dev": "tsx watch src/index.ts",
+  "build": "tsc",
+  "start": "node dist/index.js"
+}
+
+
+
+npm run dev
+
+
+
+**src/index.ts**:
+
+import Fastify from 'fastify'
+
+const app = Fastify({ logger: true })
+
+app.get('/', async (request) => {
+  const { name } = request.query as { name?: string }
+  return { message: `Hello ${name ?? 'world'}` }
+})
+
+const start = async () => {
+  try {
+    await app.listen({ port: 3000, host: '[REDACTED IP]' })
+  } catch (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+}
+
+start()
+
+
+(lembrar de tirar o "[REDACTED IP]" e trocar por localhost)
+
+npm run dev
+
+
+Exemplo de chamada:
+```
+http://localhost:3000/?name=João
+```
