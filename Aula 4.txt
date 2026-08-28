@@ -1,0 +1,50 @@
+VERBOS: 
+
+GET (apresenta)
+POST (
+PUT (altera tudo)
+PATCH (altera parcialmente)
+DELETE (deleta)
+
+ROTAS: 
+
+app.get('/dois', async () => {
+ return { hello: 'world 2' } 
+}) 
+
+app.get('/dois/pt-br', async () => {
+ return { dois: 'dois' } 
+}) 
+
+app.get('/dois/en', async () => {
+ return { dois: 'two' } 
+}) 
+
+app.get('/dois/fr', async () => {
+ return { dois: 'deux' } 
+})
+
+https://pastes.io/U3ZsNG5Q
+
+EXPLICAÇÃO: 
+app.get('/', async (request) => {
+  const { name } = request.query as { name?: string }
+  return { message: `Hello ${name ?? 'world'}` }
+})
+
+app.get (chama a instancia app)
+('/', (porta que sera utilizada)
+ async (request) => {
+  const { name } (cria um parâmetro nome)
+ = request.query (tipo do parâmetro)
+ as { name?: string } (a interrogação serve para mostrar que é um parâmetro opcional e do tipo String)
+  return { message: `Hello ${name ?? 'world'}` } (retorna a menssagem "hello" e caso tenha atribuido um nome aparece + o nome, caso não aparece o "world")
+})
+
+ex: localhost:3000/?nome=Diego
+localhost:3000/?nome=Diego&idade=12
+nos dois exemplos foi atribuido nome, logo aparecerá "hello diego" ou "hello Diego, mas caso fosse:
+localhost:3000/ apareceria apenas "hello world"
+
+
+
