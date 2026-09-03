@@ -1,0 +1,8 @@
+links2.0
+0- hello word - https://pastes.io/s4kZW3lV
+1- Rotas - https://pastes.io/U3ZsNG5Q
+2- Parâmetros (query, params, body) - https://pastes.io/wh37Kio9
+3- Operadores/parser - https://pastes.io/ATZ9yy4j
+4- verbos (https methods) - https://pastes.io/8RqFV9Vf
+5- vetores (indices) - https://pastes.io/tm58nm2A
+6- banco de dados - ?
